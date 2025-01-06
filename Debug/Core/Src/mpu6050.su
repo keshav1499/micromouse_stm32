@@ -1,0 +1,6 @@
+../Core/Src/mpu6050.c:40:9:Init_MPU6050	32	static
+../Core/Src/mpu6050.c:71:6:Get_Gyro_Cal_Values	32	static
+../Core/Src/mpu6050.c:98:6:Get_All_Values	40	static
+../Core/Src/mpu6050.c:167:7:Get_Pitch_Angle	8	static
+../Core/Src/mpu6050.c:172:7:Get_Roll_Angle	8	static
+../Core/Src/mpu6050.c:177:7:Get_Yaw_Angle	8	static

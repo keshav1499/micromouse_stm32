@@ -1,0 +1,9 @@
+../Core/Src/motor.c:14:6:forward	1
+../Core/Src/motor.c:26:6:right	1
+../Core/Src/motor.c:38:6:left	1
+../Core/Src/motor.c:48:6:follow_left_wall	3
+../Core/Src/motor.c:65:6:follow_right_wall	2
+../Core/Src/motor.c:85:6:reverse	1
+../Core/Src/motor.c:96:6:EncodedLine	3
+../Core/Src/motor.c:118:6:stop	1
+../Core/Src/motor.c:131:6:subtle_right90	2

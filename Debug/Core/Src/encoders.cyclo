@@ -1,0 +1,4 @@
+../Core/Src/encoders.c:65:5:encoderR	1
+../Core/Src/encoders.c:67:5:encoderL	1
+../Core/Src/encoders.c:69:6:updateEncoderRight	9
+../Core/Src/encoders.c:83:6:updateEncoderLeft	9

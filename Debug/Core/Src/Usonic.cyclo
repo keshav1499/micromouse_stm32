@@ -1,0 +1,4 @@
+../Core/Src/Usonic.c:27:6:K_Delay	2
+../Core/Src/Usonic.c:34:6:HAL_TIM_IC_CaptureCallback	6
+../Core/Src/Usonic.c:72:6:HCSR04_Read	1
+../Core/Src/Usonic.c:83:9:SonicDistance	1
