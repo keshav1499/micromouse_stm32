@@ -1,19 +1,168 @@
-# micromouse_stm32
-A micromouse maze solving bot based on stm32 microcontroller
-def display_engine_data(data):
-    rpm = data['rpm'].value
-    speed = data['speed'].value
-    coolant_temp = data['coolant_temp'].value
-    oil_pressure = data['oil_pressure'].value
-    throttle_position = data['throttle_position'].value
+# 🐭 Micromouse Maze-Solving Robot
 
-    table = [
-        ['RPM', rpm, 'rpm', '⚠️' if rpm > 6000 and speed < 50 else ''],
-        ['Speed', speed, 'km/h', ''],
-        ['Coolant Temp', coolant_temp, '°C', '⚠️' if coolant_temp > 105 else ''],
-        ['Oil Pressure', oil_pressure, 'bar', '⚠️' if oil_pressure < 1.5 or oil_pressure > 4.5 else ''],
-        ['Throttle Pos', throttle_position, '%', '⚠️' if throttle_position > 90 else ''],
-    ]
+A Micromouse bot built using the **STM32F303RE microcontroller** for autonomous maze solving. The bot integrates **MPU6050 (gyro+accelerometer)**, **ultrasonic and IR proximity sensors**, and **hall-effect sensor-based geared motors** for precise motion and environment sensing.
 
-    print("\nEngine Data:")
-    print(tabulate(table, headers=["Parameter", "Value", "Unit", "Status"], tablefmt="fancy_grid"))
+## 🧠 Features
+
+* ✅ Maze-solving with **Flood Fill Algorithm**
+* 📀 Accurate turning using **MPU6050 gyroscope**
+* 🧱 Obstacle detection via **IR and ultrasonic sensors**
+* ⚙️ Dead-reckoning with **hall-effect motor encoders**
+* ⚡ Real-time debugging over UART
+
+---
+
+## 🔧 Hardware Components
+
+| Component                | Purpose                              |
+| ------------------------ | ------------------------------------ |
+| STM32F303RE Nucleo       | Main microcontroller (ARM Cortex-M4) |
+| MPU6050                  | Gyroscope and accelerometer          |
+| 940nm IR Sensors         | Wall and line detection              |
+| HC-SR04 Ultrasonic       | Obstacle distance measurement        |
+| Geared Motors + Encoders | Precision motion and step counting   |
+| L298N / TB6612FNG        | Motor driver                         |
+| LiPo Battery + Regulator | Power supply                         |
+
+---
+
+## ⚙️ Firmware Architecture
+
+### Project Structure
+
+```
+/Micromouse/
+├── Core/
+│   ├── Src/
+│   ├── Inc/
+├── Drivers/
+├── FloodFill/
+├── MotionControl/
+├── Sensors/
+└── Utilities/
+```
+
+---
+
+## 🚗 Motion Control
+
+Implemented using PID-controlled motor driver signals and encoder feedback.
+
+```c
+// PID motor speed control logic
+void Motor_PID_Update(int target_rpm, int current_rpm) {
+    // PID logic here
+}
+```
+
+### Hall Effect Step Counting
+
+```c
+void EXTI15_10_IRQHandler(void) {
+    // Increment encoder tick count here
+}
+```
+
+---
+
+## 📀 Gyroscope Integration (MPU6050)
+
+Used for orientation and precise angular turns.
+
+```c
+float get_gyro_angle_z() {
+    // Read raw gyro data and integrate over time
+}
+```
+
+---
+
+## 📱 Sensor Integration
+
+### IR Sensor Reading
+
+```c
+uint16_t read_ir_sensor(uint8_t channel) {
+    // ADC reading for IR sensor
+}
+```
+
+### Ultrasonic Distance Measurement
+
+```c
+uint32_t get_distance_cm() {
+    // Echo pulse time to distance conversion
+}
+```
+
+---
+
+## 🧩 Maze Solving Algorithm
+
+Implemented using **Flood Fill** with wall memory and visited cell tracking.
+
+```c
+void flood_fill_update(uint8_t x, uint8_t y) {
+    // Update cost matrix based on current cell
+}
+```
+
+---
+
+## 📤 Debugging and Telemetry
+
+UART/USB serial output for live data monitoring.
+
+```c
+printf("X: %d Y: %d Heading: %.2f\r\n", pos_x, pos_y, heading);
+```
+
+---
+
+## 🔋 Power Management
+
+* Main motor supply: 7.4V LiPo
+* Logic supply: 5V LDO regulator
+* Brown-out and undervoltage protection
+
+---
+
+## 💪 Development Environment
+
+* **IDE**: STM32CubeIDE / Keil uVision / VS Code + PlatformIO
+* **Toolchain**: ARM GCC
+* **Debugging**: ST-Link V2 / UART Serial Monitor
+
+---
+
+## 📽️ Demo
+
+*(Add images or video links of the bot running in a maze)*
+
+---
+
+## 📌 Future Work
+
+* Implement **SLAM** with improved path memory
+* Add **Bluetooth interface** for remote commands
+* Optimize motion profile for faster traversal
+
+---
+
+## 📚 References
+
+* [STM32F3 Reference Manual](https://www.st.com/resource/en/reference_manual/dm00043574.pdf)
+* [MPU6050 Register Map](https://invensense.tdk.com/wp-content/uploads/2015/02/MPU-6000-Register-Map1.pdf)
+* [Micromouse Algorithms Wiki](https://micromouseonline.com/)
+
+---
+
+## 🤝 Contributions
+
+Feel free to fork and contribute! Open issues for suggestions or bugs.
+
+---
+
+## 📜 License
+
+This project is licensed under the MIT License.
