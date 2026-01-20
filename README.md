@@ -163,6 +163,13 @@ Feel free to fork and contribute! Open issues for suggestions or bugs.
 
 ---
 
+## Event pics
+![mouse1](https://github.com/user-attachments/assets/65936c3d-db50-4105-8471-9a234fa2bcf7)
+![mouse2](https://github.com/user-attachments/assets/5c6084e9-ac87-45ec-9658-fc84ff0b02a5)
+![mouse3](https://github.com/user-attachments/assets/73a68ee4-6d4a-4825-87f1-2d6b7d71806d)
+
+
+
 ## 📜 License
 
 This project is licensed under the MIT License.
